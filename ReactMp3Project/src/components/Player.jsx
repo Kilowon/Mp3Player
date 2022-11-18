@@ -20,9 +20,13 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 		}
 	}
 	const timeUpdateHandler = e => {
+		console.log(e.target)
 		const current = e.target.currentTime
 		const duration = e.target.duration
 		setSongInfo({ ...songInfo, currentTime: current, duration })
+	}
+	const getTime = time => {
+		return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)
 	}
 	const [songInfo, setSongInfo] = useState({
 		currentTime: null,
@@ -32,9 +36,14 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 	return (
 		<div className="player">
 			<div className="time-control">
-				<p>Start Time</p>
-				<input type="range" />
-				<p>End Time</p>
+				<p>{getTime(songInfo.currentTime)}</p>
+				<input
+					min={0}
+					max={songInfo.duration}
+					value={songInfo.currentTime}
+					type="range"
+				/>
+				<p>{getTime(songInfo.duration)}</p>
 			</div>
 			<div className="play-control">
 				<FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
@@ -50,7 +59,12 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 					icon={faAngleRight}
 				/>
 			</div>
-			<audio ref={audioRef} src={currentSong.audio}></audio>
+			<audio
+				onLoadedMetadata={timeUpdateHandler}
+				onTimeUpdate={timeUpdateHandler}
+				ref={audioRef}
+				src={currentSong.audio}
+			></audio>
 		</div>
 	)
 }
