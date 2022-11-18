@@ -17,10 +17,13 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 		} else {
 			audioRef.current.play()
 			setIsPlaying(!isPlaying)
+			// set audio volume to 0.1 on first play
+			if (songInfo.currentTime === 0) {
+				audioRef.current.volume = 0.1
+			}
 		}
 	}
 	const timeUpdateHandler = e => {
-		console.log(e.target)
 		const current = e.target.currentTime
 		const duration = e.target.duration
 		setSongInfo({ ...songInfo, currentTime: current, duration })
@@ -28,9 +31,18 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 	const getTime = time => {
 		return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)
 	}
+	const dragHandler = e => {
+		audioRef.current.currentTime = e.target.value
+		setSongInfo({ ...songInfo, currentTime: e.target.value })
+	}
+	const volumnHandler = e => {
+		audioRef.current.volume = e.target.value
+		setSongInfo({ ...songInfo, currentVolume: e.target.value })
+	}
 	const [songInfo, setSongInfo] = useState({
-		currentTime: null,
-		duration: null
+		currentTime: 0,
+		duration: 0,
+		currentVolume: 0.2
 	})
 
 	return (
@@ -38,6 +50,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 			<div className="time-control">
 				<p>{getTime(songInfo.currentTime)}</p>
 				<input
+					onChange={dragHandler}
 					min={0}
 					max={songInfo.duration}
 					value={songInfo.currentTime}
@@ -45,13 +58,23 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 				/>
 				<p>{getTime(songInfo.duration)}</p>
 			</div>
+			<div className="volumn-control">
+				<input
+					onChange={volumnHandler}
+					min={0}
+					max={1}
+					value={songInfo.currentVolume}
+					step={0.01}
+					type="range"
+				/>
+			</div>
 			<div className="play-control">
 				<FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
 				<FontAwesomeIcon
 					onClick={playSongHandler}
 					className="play"
 					size="2x"
-					icon={faPlay}
+					icon={isPlaying ? faPause : faPlay}
 				/>
 				<FontAwesomeIcon
 					className="skip-forward"
