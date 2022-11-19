@@ -58,16 +58,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 				/>
 				<p>{getTime(songInfo.duration)}</p>
 			</div>
-			<div className="volumn-control">
-				<input
-					onChange={volumnHandler}
-					min={0}
-					max={1}
-					value={songInfo.currentVolume}
-					step={0.01}
-					type="range"
-				/>
-			</div>
+
 			<div className="play-control">
 				<FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
 				<FontAwesomeIcon
@@ -81,6 +72,16 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 					size="2x"
 					icon={faAngleRight}
 				/>
+				<div className="volumn-control">
+					<input
+						onChange={volumnHandler}
+						min={0}
+						max={1}
+						value={songInfo.currentVolume}
+						step={0.01}
+						type="range"
+					/>
+				</div>
 			</div>
 			<audio
 				onLoadedMetadata={timeUpdateHandler}

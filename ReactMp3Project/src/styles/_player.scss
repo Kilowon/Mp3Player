@@ -5,7 +5,16 @@
 	align-items: center;
 	justify-content: space-between;
 }
-
+.volumn-control {
+	display: flex;
+	align-items: center;
+	input {
+		-webkit-appearance: slider-vertical;
+		appearance: slider-vertical;
+		width: 20px;
+		height: 50px;
+	}
+}
 .time-control {
 	background: lightcoral;
 	display: flex;
@@ -20,6 +29,7 @@
 		width: 100%;
 		padding: 1rem 0rem 1rem 0rem;
 	}
+
 	p {
 		padding: 1rem;
 	}
