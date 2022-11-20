@@ -2,7 +2,7 @@ import './styles/App.scss'
 import Player from './components/Player'
 import Song from './/components/Song'
 import Library from './components/Library'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import chillHop from './util.jsx'
 
 function App() {
