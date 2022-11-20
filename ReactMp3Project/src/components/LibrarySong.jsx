@@ -4,9 +4,6 @@ const LibrarySong = ({ id, song, setCurrentSong, setIsPlaying }) => {
 	const songSelectHandler = async () => {
 		await setCurrentSong(song)
 		setIsPlaying(true)
-		/* if (songInfo.currentTime === 0) {
-			audioRef.current.volume = 0.1
-		} */
 	}
 
 	return (
