@@ -3,13 +3,26 @@ import {
 	faPlay,
 	faAngleLeft,
 	faAngleRight,
-	faPause
+	faPause,
+	faVolumeHigh
 } from '@fortawesome/free-solid-svg-icons'
-import { useRef, useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
-	// Refs
 	const audioRef = useRef(null)
+
+	useEffect(() => {
+		if (isPlaying) {
+			audioRef.current.play()
+		} else {
+			audioRef.current.pause()
+		}
+	}, [isPlaying])
+	const soundLevelHandler = () => {
+		if (songInfo.currentTime === 0) {
+			audioRef.current.volume = 0.1
+		}
+	}
 	const playSongHandler = () => {
 		if (isPlaying) {
 			audioRef.current.pause()
@@ -38,6 +51,11 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 	const volumnHandler = e => {
 		audioRef.current.volume = e.target.value
 		setSongInfo({ ...songInfo, currentVolume: e.target.value })
+	}
+	const autoPlayHandler = () => {
+		if (isPlaying) {
+			audioRef.current.play()
+		}
 	}
 	const [songInfo, setSongInfo] = useState({
 		currentTime: 0,
@@ -73,6 +91,11 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 					icon={faAngleRight}
 				/>
 				<div className="volumn-control">
+					<FontAwesomeIcon
+						className="volume-icon"
+						size="1x"
+						icon={faVolumeHigh}
+					/>
 					<input
 						onChange={volumnHandler}
 						min={0}
@@ -84,7 +107,9 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 				</div>
 			</div>
 			<audio
+				onPlay={soundLevelHandler}
 				onLoadedMetadata={timeUpdateHandler}
+				onLoadedData={autoPlayHandler}
 				onTimeUpdate={timeUpdateHandler}
 				ref={audioRef}
 				src={currentSong.audio}
