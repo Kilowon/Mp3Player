@@ -91,18 +91,19 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying }) => {
 					icon={faAngleRight}
 				/>
 				<div className="volumn-control">
-					<FontAwesomeIcon
-						className="volume-icon"
-						size="1x"
-						icon={faVolumeHigh}
-					/>
 					<input
+						className="bobert"
 						onChange={volumnHandler}
 						min={0}
 						max={1}
 						value={songInfo.currentVolume}
 						step={0.01}
 						type="range"
+					/>
+					<FontAwesomeIcon
+						className="volume-icon"
+						size="1x"
+						icon={faVolumeHigh}
 					/>
 				</div>
 			</div>
