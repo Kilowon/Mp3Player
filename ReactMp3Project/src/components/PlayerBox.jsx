@@ -3,15 +3,18 @@ import Song from './Song'
 import Library from './Library'
 import { useState, useEffect } from 'react'
 import chillHop from '../util.jsx'
+import Nav from './Nav'
 
 function PlayerBox() {
 	const [songs, setSongs] = useState(chillHop())
 	const [currentSong, setCurrentSong] = useState(songs[0])
 	const [isPlaying, setIsPlaying] = useState(false)
+	const [libraryStatus, setLibraryStatus] = useState(false)
 
 	return (
 		<div className="player-box">
-			<Song currentSong={currentSong} />
+			<Nav setLibraryStatus={setLibraryStatus} libraryStatus={libraryStatus} />
+			<Song currentSong={currentSong} isPlaying={isPlaying} />
 			<Player
 				currentSong={currentSong}
 				setCurrentSong={setCurrentSong}
@@ -19,6 +22,7 @@ function PlayerBox() {
 				setIsPlaying={setIsPlaying}
 			/>
 			<Library
+				libraryStatus={libraryStatus}
 				songs={songs}
 				setCurrentSong={setCurrentSong}
 				setIsPlaying={setIsPlaying}
