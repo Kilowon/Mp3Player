@@ -2,7 +2,7 @@ import React from 'react'
 
 const Song = ({ currentSong, isPlaying }) => {
 	return (
-		<div className="song-container">
+		<div className={`song-container ${isPlaying ? 'bg-pan-bottom' : ''}`}>
 			<img
 				src={currentSong.cover}
 				className={` ${isPlaying ? 'rotate-center' : ''} `}
