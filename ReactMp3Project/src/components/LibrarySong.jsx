@@ -1,6 +1,12 @@
 import React from 'react'
 
-const LibrarySong = ({ id, song, setCurrentSong, setIsPlaying }) => {
+const LibrarySong = ({
+	id,
+	song,
+	currentSong,
+	setCurrentSong,
+	setIsPlaying
+}) => {
 	const songSelectHandler = async () => {
 		await setCurrentSong(song)
 		setIsPlaying(true)
@@ -9,7 +15,9 @@ const LibrarySong = ({ id, song, setCurrentSong, setIsPlaying }) => {
 	return (
 		<div
 			onClick={songSelectHandler}
-			className={`library-song ${song.active ? 'selected' : ''}`}
+			className={`library-song ${
+				song.id === currentSong.id ? 'selected' : ''
+			} `}
 		>
 			<img src={song.cover} />
 			<div className="song-description">

@@ -10,7 +10,7 @@ function PlayerBox() {
 	const [isPlaying, setIsPlaying] = useState(false)
 
 	return (
-		<div className="App">
+		<div className="player-box">
 			<Song currentSong={currentSong} />
 			<Player
 				currentSong={currentSong}
@@ -22,6 +22,7 @@ function PlayerBox() {
 				songs={songs}
 				setCurrentSong={setCurrentSong}
 				setIsPlaying={setIsPlaying}
+				currentSong={currentSong}
 			/>
 		</div>
 	)
