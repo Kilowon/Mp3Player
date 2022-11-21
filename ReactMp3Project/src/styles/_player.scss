@@ -1,13 +1,17 @@
 .player {
-	min-height: 20vh;
+	min-height: 15vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
+
+	color: white;
+	background: rgb(44, 44, 48);
+	box-shadow: 1px 1px 5px inset rgb(27, 27, 27);
 }
 .volumn-control {
 	display: flex;
 	align-items: center;
+	color: whitesmoke;
 
 	input[type='range'] {
 		height: 18px;
@@ -104,9 +108,9 @@
 }
 
 .time-control {
-	background: lightcoral;
+	background: rgb(44, 44, 48);
 	display: flex;
-	width: 50%;
+	width: 80%;
 	input {
 		background: transparent;
 		border: none;
@@ -142,7 +146,8 @@
 		height: 16px;
 		width: 19px;
 		border-radius: 6px;
-		background: #c26767;
+		background: linear-gradient(220deg, #cc6aa5, #3e91cc, #2dcca7);
+		background-size: 300% 200%;
 		cursor: pointer;
 		-webkit-appearance: none;
 		margin-top: -1px;
@@ -217,7 +222,7 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem;
-	width: 30%;
+	width: 100%;
 	svg {
 		cursor: pointer;
 	}
