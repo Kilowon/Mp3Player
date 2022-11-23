@@ -1,9 +1,9 @@
 nav {
 	min-height: 7vh;
 	display: flex;
-	justify-content: space-between;
+	justify-content: right;
 	align-items: center;
-	padding: 1rem 10rem;
+
 	background: #282828;
 	z-index: 10;
 	a {
@@ -27,8 +27,6 @@ nav {
 		display: none;
 	}
 	@media (max-width: 1300px) {
-		flex-direction: column;
-		padding: 2rem 1rem;
 		ul {
 			padding: 2rem;
 			justify-content: space-around;
@@ -50,7 +48,7 @@ nav {
 		background: transparent;
 		border: none;
 		cursor: pointer;
-		padding: 0.5rem 1rem;
+		padding: 0.5rem 1.5rem 0.5rem 1.5rem;
 		transition: all 0.5s ease;
 	}
 }

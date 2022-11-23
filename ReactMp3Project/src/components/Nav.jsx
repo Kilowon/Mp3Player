@@ -4,6 +4,8 @@ import { faMusic } from '@fortawesome/free-solid-svg-icons'
 const Nav = ({ setLibraryStatus, libraryStatus }) => {
 	return (
 		<nav>
+			<div className="space"></div>
+			<div className="space"></div>
 			<button
 				className={`library-btn ${
 					libraryStatus ? 'active-library-button' : ''
