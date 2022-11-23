@@ -80,6 +80,7 @@ const Player = ({
 			}
 			setCurrentSong(songs[(currentIndex - 1) % songs.length])
 		}
+		setIsPlaying(true)
 	}
 
 	return (
@@ -139,6 +140,7 @@ const Player = ({
 				onTimeUpdate={timeUpdateHandler}
 				ref={audioRef}
 				src={currentSong.audio}
+				onEnded={() => skipTrackHandler('skip-forward')}
 			></audio>
 		</div>
 	)
