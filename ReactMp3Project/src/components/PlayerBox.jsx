@@ -16,6 +16,7 @@ function PlayerBox() {
 			<Nav setLibraryStatus={setLibraryStatus} libraryStatus={libraryStatus} />
 			<Song currentSong={currentSong} isPlaying={isPlaying} />
 			<Player
+				songs={songs}
 				currentSong={currentSong}
 				setCurrentSong={setCurrentSong}
 				isPlaying={isPlaying}
