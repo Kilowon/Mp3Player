@@ -256,3 +256,12 @@
 		opacity: 1;
 	}
 }
+
+@media screen and (max-width: 768px) {
+	.time-control {
+		width: 100%;
+	}
+	.play-control {
+		width: 90%;
+	}
+}

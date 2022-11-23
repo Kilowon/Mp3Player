@@ -25,7 +25,7 @@
 		object-fit: cover;
 	}
 	img {
-		width: 25%;
+		width: 20%;
 		border-radius: 50%;
 	}
 	h2 {
@@ -168,6 +168,14 @@
 			.circle {
 				animation-delay: random(4000) + ms;
 			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.song-container {
+		img {
+			width: 40%;
 		}
 	}
 }
